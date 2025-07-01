@@ -151,6 +151,25 @@ class Address extends AbstractModel
         return $this;
     }
 
+    /**
+     * Sprawdzamy, czy adres jest w pełni poprawny.
+     * Adres jest poprawny, jeśli wszystkie wymagane pola są wypełnione.
+     * Możemy dodać dodatkowe walidacje, jeśli zajdzie taka potrzeba.
+     */
+    public function isFullyValid(): bool
+    {
+        if (empty($this->name) ||
+            empty($this->street) ||
+            empty($this->houseNumber) ||
+            empty($this->city) ||
+            empty($this->postalCode) ||
+            empty($this->countryCode)) {
+            return false;
+        }
+
+        return true;
+    }
+
 
     public function toArray(): array
     {
